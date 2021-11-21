@@ -72,6 +72,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "ExchangeRateHistory.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ExchangeRateHistory.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExchangeRateHistory.Services.dll": {}
+        }
       }
     }
   },
@@ -200,10 +210,16 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "ExchangeRateHistory.Services/1.0.0": {
+      "type": "project",
+      "path": "../ExchangeRateHistory.Services/ExchangeRateHistory.Services.csproj",
+      "msbuildProject": "../ExchangeRateHistory.Services/ExchangeRateHistory.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ExchangeRateHistory.Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -233,7 +249,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Projects\\ExchangeRateHistory\\ExchangeRateHistory.Services\\ExchangeRateHistory.Services.csproj": {
+              "projectPath": "C:\\Projects\\ExchangeRateHistory\\ExchangeRateHistory.Services\\ExchangeRateHistory.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

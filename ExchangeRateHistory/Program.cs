@@ -1,3 +1,6 @@
+using ExchangeRateHistory.Services;
+using ExchangeRateHistory.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// HttpClients
+builder.Services.AddHttpClient<IExchangeRateService, ExchangeRateHostService>(client => {
+    client.BaseAddress = new Uri("https://api.exchangerate.host/");
+});
 
 var app = builder.Build();
 
