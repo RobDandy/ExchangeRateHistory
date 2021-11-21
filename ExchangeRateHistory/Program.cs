@@ -10,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Services
+builder.Services.AddScoped<IExchangeRateService, ExchangeRateHostService>();
+
 // HttpClients
 builder.Services.AddHttpClient<IExchangeRateService, ExchangeRateHostService>(client => {
     client.BaseAddress = new Uri("https://api.exchangerate.host/");
