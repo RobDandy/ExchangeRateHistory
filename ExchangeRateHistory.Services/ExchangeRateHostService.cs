@@ -45,6 +45,7 @@ public class ExchangeRateHostService : IExchangeRateService {
         } catch (NullReferenceException ex) {
             // Logging
             Console.WriteLine($"{ex.Message} \n {ex.StackTrace}");
+            // We could log this error and return null but assume we'd rather send an error than inaccurate/incomplete data
             throw;
         }
     }
