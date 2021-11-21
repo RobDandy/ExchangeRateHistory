@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XNJXhpYYFuKi4ANqGdqGZLQMT8LcYV6mhdmFvtCoi7Eq5kzq6iO4Xca3ptoqub+GiaIZCAOmrWRYPXH2o3Jf1g==",
+  "dgSpecHash": "91QCSmakvH1RBJssLmyrkkVhOLI23VXqROV/zs6FZp5j1wbpYWwRoduOQC+7aDMf6X43ZzdExwGcTK2GLGJtXw==",
   "success": true,
   "projectFilePath": "C:\\Projects\\ExchangeRateHistory\\ExchangeRateHistory\\ExchangeRateHistory.API.csproj",
   "expectedPackageFiles": [

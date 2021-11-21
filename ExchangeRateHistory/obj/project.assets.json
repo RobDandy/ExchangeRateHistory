@@ -73,9 +73,22 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "ExchangeRateHistory.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ExchangeRateHistory.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExchangeRateHistory.Domain.dll": {}
+        }
+      },
       "ExchangeRateHistory.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ExchangeRateHistory.Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/ExchangeRateHistory.Services.dll": {}
         },
@@ -210,6 +223,11 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "ExchangeRateHistory.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ExchangeRateHistory.Domain/ExchangeRateHistory.Domain.csproj",
+      "msbuildProject": "../ExchangeRateHistory.Domain/ExchangeRateHistory.Domain.csproj"
     },
     "ExchangeRateHistory.Services/1.0.0": {
       "type": "project",

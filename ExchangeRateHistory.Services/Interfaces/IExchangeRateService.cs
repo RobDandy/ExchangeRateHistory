@@ -1,6 +1,8 @@
-﻿namespace ExchangeRateHistory.Services.Interfaces;
+﻿using ExchangeRateHistory.Domain;
+
+namespace ExchangeRateHistory.Services.Interfaces;
 
 public interface IExchangeRateService {
-    Task<decimal> GetRate(string baseCurrency, string targetCurrency, DateTime date);
+    Task<ExchangeRate> GetRate(string baseCurrency, string targetCurrency, DateTime date);
 }
 

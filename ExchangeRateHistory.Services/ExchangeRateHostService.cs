@@ -1,4 +1,7 @@
-﻿using ExchangeRateHistory.Services.Interfaces;
+﻿using ExchangeRateHistory.Domain;
+using ExchangeRateHistory.Domain.ExchangeRateHost;
+using ExchangeRateHistory.Services.Interfaces;
+using Newtonsoft.Json;
 
 namespace ExchangeRateHistory.Services;
 
@@ -8,15 +11,31 @@ public class ExchangeRateHostService : IExchangeRateService {
         _http = http;
     }
 
-    public async Task<decimal> GetRate(string baseCurrency, string targetCurrency, DateTime date) {
+    public async Task<ExchangeRate> GetRate(string baseCurrency, string targetCurrency, DateTime date) {
         try {
             var rsp = await _http.GetAsync($"{date:yyyy-MM-dd}?base={baseCurrency}&symbols={targetCurrency}");
+            var json = await rsp.Content.ReadAsStringAsync();
+            var ratesRsp = JsonConvert.DeserializeObject<HistoricalRatesRsp>(json);
+
+            if (ratesRsp?.Rates?.TryGetValue(targetCurrency, out var rate) ?? false) {
+                return new ExchangeRate {
+                    BaseCurrency = ratesRsp.Base,
+                    TargetCurrency = targetCurrency,
+                    Rate = rate,
+                    Date = ratesRsp.Date
+                };
+            } else {
+                throw new NullReferenceException("No rates were returned from ExchangeRateHost");
+            }
         } catch (HttpRequestException ex) {
             // Logging
             Console.WriteLine($"{ex.Message} \n {ex.StackTrace}");
+            throw;
+        } catch (NullReferenceException ex) {
+            // Logging
+            Console.WriteLine($"{ex.Message} \n {ex.StackTrace}");
+            throw;
         }
-
-        throw new NotImplementedException();
     }
 }
 
