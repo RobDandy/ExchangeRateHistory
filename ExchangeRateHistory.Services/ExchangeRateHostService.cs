@@ -11,6 +11,17 @@ public class ExchangeRateHostService : IExchangeRateService {
         _http = http;
     }
 
+    public async Task<IEnumerable<ExchangeRate>> GetRates(string baseCurrency, string targetCurrency, DateTime[] dates) {
+        var rateTasks = new List<Task<ExchangeRate>>();
+
+        foreach (var date in dates) {
+            var task = GetRate(baseCurrency, targetCurrency, date);
+            rateTasks.Add(task);
+        }
+
+        return await Task.WhenAll(rateTasks);
+    }
+
     public async Task<ExchangeRate> GetRate(string baseCurrency, string targetCurrency, DateTime date) {
         try {
             var rsp = await _http.GetAsync($"{date:yyyy-MM-dd}?base={baseCurrency}&symbols={targetCurrency}");

@@ -16,12 +16,7 @@ namespace ExchangeRateHistory.API.Controllers {
 
         [HttpGet]
         public async Task<AverageExchangeRate> GetHistoricalRates(string baseCurrency, string targetCurrency, [FromQuery] DateTime[] dates) {
-            var rates = new List<ExchangeRate>();
-
-            foreach (var date in dates) {
-                var rate = await _exchangeRateService.GetRate(baseCurrency, targetCurrency, date);
-                rates.Add(rate);
-            }
+            var rates = await _exchangeRateService.GetRates(baseCurrency, targetCurrency, dates);
 
             var minimumRate = rates.MinBy(r => r.Rate);
             var maximumRate = rates.MaxBy(r => r.Rate);
