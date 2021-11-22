@@ -1,11 +1,11 @@
 ﻿namespace ExchangeRateHistory.Domain;
 
 public class AverageExchangeRate {
-    public decimal MinimumRate { get; init; }
-    public DateTime MinimumRateDate { get; init; }
-    public decimal MaximumRate { get; init; }
-    public DateTime MaximumRateDate { get; init; }
-    public decimal AverageRate { get; init; }
+    public decimal MinimumRate { get; private init; }
+    public DateTime MinimumRateDate { get; private init; }
+    public decimal MaximumRate { get; private init; }
+    public DateTime MaximumRateDate { get; private init; }
+    public decimal AverageRate { get; private init; }
 
     public static AverageExchangeRate Create(IEnumerable<ExchangeRate> rates) {
         if (rates == null || !rates.Any()) {
